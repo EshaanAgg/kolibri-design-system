@@ -707,6 +707,23 @@
           </DocsShowCode>
           <!-- eslint-enable -->
         </template>
+
+        <template #javascript>
+          <!-- eslint-disable -->
+          <!-- prettier-ignore -->
+          <DocsShowCode language="javascript">
+            import useKResponsiveWindow from 'kolibri-design-system/lib/composables/useKResponsiveWindow';
+
+            export default {
+              setup() {
+                const { windowBreakpoint } = useKResponsiveWindow();
+                return { windowBreakpoint };
+              },
+              data() { ... }
+            };
+          </DocsShowCode>
+          <!-- eslint-enable -->
+        </template>
       </DocsExample>
 
       <h3>
