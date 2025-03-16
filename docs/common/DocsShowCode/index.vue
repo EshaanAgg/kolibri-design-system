@@ -20,6 +20,8 @@
   import 'prismjs/plugins/normalize-whitespace/prism-normalize-whitespace';
   import PrismComponent from 'vue-prism-component';
 
+  import 'prismjs/components/prism-scss'; // Import SCSS styles for prism manually
+
   export default {
     name: 'DocsShowCode',
     components: {
