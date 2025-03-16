@@ -639,109 +639,75 @@
         space:
       </p>
 
-      <DocsShow block>
-        <KCardGrid
-          layout="1-2-2"
-          :skeletonsConfig="skeletonsConfig6"
-          :loading="loading"
-        >
-          <DocsKCard
-            v-for="i in 2"
-            :key="i"
-            :headingLevel="4"
-            :orientation="windowBreakpoint < 4 ? 'vertical' : 'horizontal'"
-            :prependTitle="`(${i})`"
-          />
-        </KCardGrid>
-      </DocsShow>
+      <DocsExample
+        loadExample="KCardGrid/ResponsiveOrientation"
+        exampleId="responsive-orientation"
+      >
+        <template #javascript>
+          <!-- eslint-disable -->
+          <!-- prettier-ignore -->
+          <DocsShowCode language="javascript">
+            import useKResponsiveWindow from 'kolibri-design-system/lib/composables/useKResponsiveWindow';
 
-      <!-- eslint-disable -->
-      <!-- prettier-ignore -->
-      <DocsShowCode language="javascript">
-        import useKResponsiveWindow from 'kolibri-design-system/lib/composables/useKResponsiveWindow';
+            export default {
+              setup() {
+                const { windowBreakpoint } = useKResponsiveWindow();
+                return { windowBreakpoint };
+              },
+              data() { ... }
+            };
+          </DocsShowCode>
+          <!-- eslint-enable -->
+        </template>
 
-        export default {
-          setup() {
-            const { windowBreakpoint } = useKResponsiveWindow();
-            return { windowBreakpoint };
-          },
-        };
-      </DocsShowCode>
-      <!-- eslint-enable -->
-
-      <!-- eslint-disable -->
-      <DocsShowCode language="html">
-        <KCardGrid layout="1-2-2">
-          <KCard
-            v-for="i in 2"
-            :orientation="windowBreakpoint < 4 ? 'vertical' : 'horizontal'"
-            ...
-          />
-        </KCardGrid>
-      </DocsShowCode>
-      <!-- eslint-enable -->
+        <template #html>
+          <!-- eslint-disable -->
+          <DocsShowCode language="html">
+            <KCardGrid layout="1-2-2">
+              <KCard
+                v-for="i in 2"
+                :orientation="windowBreakpoint < 4 ? 'vertical' : 'horizontal'"
+                ...
+              />
+            </KCardGrid>
+          </DocsShowCode>
+          <!-- eslint-enable -->
+        </template>
+      </DocsExample>
 
       <p>
         This technique also works for adjusting <code>KCard</code> slots content. In the following
         example, some metadata pills are hidden on smaller screens:
       </p>
 
-      <DocsShow block>
-        <KCardGrid
-          layout="1-2-2"
-          :skeletonsConfig="skeletonsConfig7"
-          :loading="loading"
-        >
-          <DocsKCard
-            v-for="i in 2"
-            :key="i"
-            :headingLevel="4"
-            :prependTitle="`(${i})`"
-          >
-            <template #footer>
-              <div
-                class="pills"
-                :style="{ color: $themeTokens.annotation }"
+      <DocsExample
+        loadExample="KCardGrid/ResponsiveCustom.vue"
+        exampleId="responsive-custom"
+      >
+        <!-- eslint-disable -->
+        <template #html>
+          <DocsShowCode language="html">
+            <KCardGrid layout="1-2-2">
+              <KCard
+                v-for="i in 2"
+                ...
               >
-                <span :style="{ 'background-color': $themePalette.grey.v_100 }">
-                  <KIcon
-                    icon="readSolid"
-                    :style="{ fontSize: '13px', position: 'relative', top: '3px' }"
-                  />
-                  Read
-                </span>
-                <span :style="{ 'background-color': $themePalette.grey.v_100 }">
-                  Short Activity
-                </span>
-                <template v-if="windowBreakpoint > 3">
-                  <span :style="{ 'background-color': $themePalette.grey.v_100 }"> Biology </span>
-                  <span :style="{ 'background-color': $themePalette.grey.v_100 }"> Ecology </span>
+                <template #footer>
+                  <span>
+                    <KIcon ...> Read </KIcon>
+                  </span>
+                  <span> Short Activity </span>
+                  <template v-if="windowBreakpoint > 3">
+                    <span> Biology </span>
+                    <span> Ecology </span>
+                  </template>
                 </template>
-              </div>
-            </template>
-          </DocsKCard>
-        </KCardGrid>
-      </DocsShow>
-
-      <!-- eslint-disable -->
-      <DocsShowCode language="html">
-        <KCardGrid layout="1-2-2">
-          <KCard
-            v-for="i in 2"
-            ...
-          >
-            <template #footer>
-              <span ...>Read</span>
-              <span ...>Short Activity</span>
-              <template v-if="windowBreakpoint > 3">
-                <span ...>Biology</span>
-                <span ...>Ecology</span>
-              </template>
-            </template>
-          </KCard>
-        </KCardGrid>
-      </DocsShowCode>
-      <!-- eslint-enable -->
+              </KCard>
+            </KCardGrid>
+          </DocsShowCode>
+          <!-- eslint-enable -->
+        </template>
+      </DocsExample>
 
       <h3>
         Loading state
@@ -967,12 +933,8 @@
 <script>
 
   import useKResponsiveWindow from '../../lib/composables/useKResponsiveWindow';
-  import DocsKCard from '../pages-components/DocsKCard';
 
   export default {
-    components: {
-      DocsKCard,
-    },
     setup() {
       const { windowBreakpoint } = useKResponsiveWindow();
       return { windowBreakpoint };
